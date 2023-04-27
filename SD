@@ -1,0 +1,7 @@
+//Custom Exception Class : InvalidPhonumber
+    public class InvalidPhonumber extends Exception {
+    // Constructor
+    public InvalidPhonumber() {
+        super("There must be 10 numbers for phonenumber.");
+    }
+    }
