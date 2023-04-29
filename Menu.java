@@ -30,11 +30,13 @@ public class Menu {
     }
 
     public static void PrintMenu(Menu[] menu) {
+        color cl = new color();
         System.out.println("--------------------");
         System.out.println("|      Menu        |");
         System.out.println("--------------------");
         for (int i = 0; i < menu.length; i++) {
-            System.out.println((i + 1) + ". " + menu[i].getName() + " - " + menu[i].getPrice() + " $");
+            System.out.println(
+                    (i + 1) + ". " + cl.Cyan(menu[i].getName()) + " - " + menu[i].getPrice() + cl.ErText(" $"));
         }
         System.out.println("--------------------");
     }

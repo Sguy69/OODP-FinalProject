@@ -42,6 +42,11 @@ public class color {
         return TextCol;
     }
 
+    public String Blue(String text) {
+        String TextCol = BLUE + text + RESET;
+        return TextCol;
+    }
+
     public String Cyan(String text) {
         String TextCol = CYAN + text + RESET;
         return TextCol;
@@ -60,6 +65,16 @@ public class color {
     public String ThingComplete(int text) {
         String Word = Integer.toString(text);
         String TextCol = GREEN + Word + RESET;
+        return TextCol;
+    }
+
+    public String Black(String text) {
+        String TextCol = BLACK + text + RESET;
+        return TextCol;
+    }
+
+    public String yellow(String text) {
+        String TextCol = YELLOW + text + RESET;
         return TextCol;
     }
 

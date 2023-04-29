@@ -9,6 +9,7 @@ public class Main {
         Customer.addCustomer("Poommy", "0955960338", true, 10);
         Customer.addCustomer("Puneiei", "0123456789", true, 10);
         Customer.addCustomer("Domyuyu", "0234567890", true, 0);
+        Customer.addCustomer("Guykuku", "0915492115", true, 9);
         do {
             System.out.println("");
             cl.PrintCafeName();
@@ -22,7 +23,7 @@ public class Main {
             Scanner scan = new Scanner(System.in);
             while (true) {
 
-                System.out.print("\n|" + cl.Title("Select menu (1-9)") + "| ");
+                System.out.print("\n| Select menu (1-9) | ");
                 String input = scan.nextLine();
                 try {
                     menuIndex = Integer.parseInt(input);
@@ -30,8 +31,8 @@ public class Main {
                         break;
                     } else {
                         System.out.println(
-                                cl.Error("Error") + " : " + cl.ErText("Please input a number between " + cl.ErText("1")
-                                        + " and " + cl.ErText("9") + " "));
+                                cl.Error("Error") + " : " + cl.ErText("Please input a number between " + cl.Cyan("1")
+                                        + cl.ErText(" and ") + cl.Cyan("9") + " "));
                     }
                 } catch (NumberFormatException e) {
                     System.out.println(cl.Error("Error") + " : " + cl.ErText("Please input only numbers"));
@@ -74,13 +75,15 @@ public class Main {
             } else {
                 System.out.println("\nYou're not our member yet");
                 while (true) {
-                    System.out.print("Do you want to " + cl.ErText("register") + "? (" + cl.ThingComplete("Y") + "/"
-                            + cl.Red("N") + ") ");
+                    System.out.print(
+                            cl.yellow("Do you want to ") + cl.ErText("register") + cl.yellow("?") + " ("
+                                    + cl.ThingComplete("Y") + "/"
+                                    + cl.Red("N") + ") ");
                     Scanner Ans = new Scanner(System.in);
                     String customerAns = Ans.nextLine();
                     if (customerAns.toUpperCase().equals("Y")) {
                         // register
-                        System.out.print("Name : ");
+                        System.out.print(cl.yellow("Name : "));
                         String NameInput = Ans.next();
                         Customer.addCustomer(NameInput, phonenumber, true, 0);
 
@@ -102,15 +105,16 @@ public class Main {
             }
             System.out.println("\n" + cl.Title("-------------------BILL---------------------"));
             System.out.println(
-                    "\nYou selected menu: " + menu[menuIndex - 1].getName() + " " + menu[menuIndex - 1].getPrice()
+                    cl.yellow("\nYou selected menu: ") + menu[menuIndex - 1].getName() + " "
+                            + menu[menuIndex - 1].getPrice()
                             + " $"
-                            + "\nPhonenumber: " + phonenumber);
+                            + cl.yellow("\nPhonenumber: ") + phonenumber);
 
             if (Customer.CheckIfMember(phonenumber)) {
                 Customer.addPoints(phonenumber, 1);
                 System.out.println("You gain " + cl.Cyan("1") + " more point, Now you have "
                         + cl.ThingComplete(Customer.findCustomerByPhoneNum(phonenumber).getPoints())
-                        + ((Customer.findCustomerByPhoneNum(phonenumber).getPoints() < 1) ? "Points" : "Point"));
+                        + ((Customer.findCustomerByPhoneNum(phonenumber).getPoints() < 1) ? "Points" : " Point"));
             }
             Thread.sleep(5000);
         } while (true);
