@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         // Color
         color cl = new color();
-
+        double totalPrice = 0;
         // Add Custome
         Customer.addCustomer("Poommy", "0955960338", true, 10);
         Customer.addCustomer("Puneiei", "0123456789", true, 10);
@@ -38,6 +38,7 @@ public class Main {
                     System.out.println(cl.Error("Error") + " : " + cl.ErText("Please input only numbers"));
                 }
             }
+            totalPrice = menu[menuIndex - 1].getPrice();
 
             // Get user phonenumber
             // boolean phoneInputStatus = false;
@@ -66,8 +67,8 @@ public class Main {
                     if (customerAns.toUpperCase().equals("Y")) {
                         // tranfer point
                         Customer.findCustomerByPhoneNum(phonenumber)
-                                .setPoint(Customer.findCustomerByPhoneNum(phonenumber).getPoints() - 10);
-                    } else {
+                                .setPoint(Customer.findCustomerByPhoneNum(phonenumber).getPoints() - 11);
+                        totalPrice = 0;
                     }
                 } else {
                 }
@@ -106,7 +107,7 @@ public class Main {
             System.out.println("\n" + cl.Title("-------------------BILL---------------------"));
             System.out.println(
                     cl.yellow("\nYou selected menu: ") + menu[menuIndex - 1].getName() + " "
-                            + menu[menuIndex - 1].getPrice()
+                            + totalPrice
                             + " $"
                             + cl.yellow("\nPhonenumber: ") + phonenumber);
 
